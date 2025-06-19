@@ -16,7 +16,9 @@ This is a small project that I created with the goal of understanding the [`cli-
    cd folder-name
 
 2. Install dependencies:
+    ```bash
     npm install
 
 3. Start the program:
+    ```bash
     node index.mjs
