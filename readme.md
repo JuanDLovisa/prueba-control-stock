@@ -10,12 +10,12 @@ This is a small project that I created with the goal of understanding the [`cli-
 
 ## 🚀 How to install
 
-1. Se debe clonar el repositorio:
+1. The user must clone the repository:
    ```bash
    git clone https://github.com/JuanDLovisa/prueba-control-stock.git
    cd folder-name
 
-2. Instalar dependencies:
+2. Install dependencies:
     npm install
 
 3. Start the program:
