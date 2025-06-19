@@ -1,4 +1,4 @@
-# Proyecto prueba de Consola con Inquirer y CLI-Table3
+# Small console project using Inquirer y CLI-Table3 for js
 
 This is a small project that I created with the goal of understanding the [`cli-table3`](https://www.npmjs.com/package/cli-table3) and [`inquirer`](https://www.npmjs.com/package/inquirer) libraries for JavaScript using Node.js.
 
