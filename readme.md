@@ -15,8 +15,8 @@ This is a small project that I created with the goal of understanding the [`cli-
    git clone https://github.com/JuanDLovisa/prueba-control-stock.git
    cd folder-name
 
-2. Instalar las dependencias:
+2. Instalar dependencies:
     npm install
 
-3. Uso del programa
+3. Start the program:
     node index.mjs
