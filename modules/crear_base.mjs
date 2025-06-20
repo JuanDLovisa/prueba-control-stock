@@ -4,11 +4,9 @@ import {input} from "./utils.mjs"
 export async function crearBase(sequelize){
     try {
     await sequelize.authenticate();
-    console.log('Conectado correctamente.');
+    console.log('Conectado correctamente ✅');
 
-    let sql = "create database if not exists control_stock";
-    await sequelize.query(sql);
-    sql = `create table if not exists tipo_p_s(id int not null auto_increment primary key,
+    let sql = `create table if not exists tipo_p_s(id int not null auto_increment primary key,
 									        tipo varchar(30) not null unique);`;
     await sequelize.query(sql);
     sql = `create table if not exists productos_servicios(id int not null auto_increment primary key,
@@ -23,7 +21,7 @@ export async function crearBase(sequelize){
     await sequelize.query(sql);
     }
     catch(error){
-        console.error("Ha ocurrido un error al crear las tablas, verifique su conexion SQL",error)
+        console.error("❌Ha ocurrido un error al crear las tablas, verifique su conexion SQL",error)
         console.log("Saliendo... presione Enter para continuar")
         await input("")
         await sequelize.close();

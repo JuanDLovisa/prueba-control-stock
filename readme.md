@@ -19,6 +19,11 @@ This is a small project that I created with the goal of understanding the [`cli-
     ```bash
     npm install
 
-3. Start the program (before you must create a database (name = 'control_stock', user = 'root',  password = '123456789') I will create it automatically in next updates):
+3. Run init-db.js just once:
+    ```bash
+    node init-db.js
+This file will create a database called control_stock, enter your user (default root) and password to connect with mysql.
+
+4. Start the program and give it a try:
     ```bash
     node index.mjs

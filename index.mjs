@@ -41,7 +41,7 @@ async function main(){
 }
 
 main().catch((err) => {
-  console.error('Ocurrió un error inesperado:', err);
+  console.error('❌Ocurrió un error inesperado:', err);
   rl.close();
   sequelize.close();
   process.exit(1);

@@ -30,11 +30,11 @@ export async function agregar_productos(){
     const idTipo = crearProducto.idTipo
 
     if(nombreP == "" || precio == ""){
-        await input("No deben quedar campos vacios, presione Enter para regresar al menu...")
+        await input("❌No deben quedar campos vacios, presione Enter para regresar al menu...")
         return
     }
     if(Number(precio) < 0){
-        await input("No deben existir precios negativos, presione Enter para regresar al menu...")
+        await input("❌No deben existir precios negativos, presione Enter para regresar al menu...")
         return
     }
 
@@ -47,9 +47,9 @@ export async function agregar_productos(){
         type: QueryTypes.INSERT
         });
 
-        console.log(`${nombreP} insertado correctamente.`);
+        console.log(`${nombreP} insertado correctamente ✅`);
     } catch (error) {
-        console.error("Ha ocurrido un error al agregar el producto")
+        console.error("❌Ha ocurrido un error al agregar el producto")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -61,7 +61,7 @@ export async function agregar_tipo(){
     const nombreT = crearTipo.nombreTipo
     
     if(nombreT == ""){
-        await input("No deben quedar campos vacios, presione Enter para regresar al menu...")
+        await input("❌No deben quedar campos vacios, presione Enter para regresar al menu...")
         return
     }
 
@@ -73,9 +73,9 @@ export async function agregar_tipo(){
     type: QueryTypes.INSERT
     });
 
-    console.log(`Tipo de producto: ${nombreT} insertado correctamente.`);
+    console.log(`Tipo de producto: ${nombreT} insertado correctamente ✅`);
     } catch (error) {
-        console.error("Ha ocurrido un error al agregar el tipo")
+        console.error("❌Ha ocurrido un error al agregar el tipo")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -87,12 +87,12 @@ export async function actualizar_producto(){
     const nuevoPrecio = actualizarProducto.precioProducto
 
     if(nuevoPrecio == ""){
-        await input("No deben quedar campos vacios, presione Enter para regresar al menu...")
+        await input("❌No deben quedar campos vacios, presione Enter para regresar al menu...")
         return
     }
 
     if(Number(nuevoPrecio) < 0){
-        await input("No deben existir precios negativos, presione Enter para regresar al menu...")
+        await input("❌No deben existir precios negativos, presione Enter para regresar al menu...")
         return
     }
 
@@ -106,7 +106,7 @@ export async function actualizar_producto(){
         console.log("Producto actualizado.")
     }
     catch(error){
-        console.error("Ha ocurrido un error al actualizar el producto")
+        console.error("❌Ha ocurrido un error al actualizar el producto")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -118,7 +118,7 @@ export async function actualizar_tipo(){
     const nuevoNombreT = actualizarTipo.nombreNuevo
 
     if(nuevoNombreT == ""){
-        await input("No deben quedar campos vacios, presione Enter para regresar al menu...")
+        await input("❌No deben quedar campos vacios, presione Enter para regresar al menu...")
         return
     }
 
@@ -129,10 +129,10 @@ export async function actualizar_tipo(){
             replacements:{anteriorNombreT, nuevoNombreT},
             type: QueryTypes.UPDATE
         })
-        console.log("Tipo actualizado.")
+        console.log("Tipo actualizado ✅")
     }
     catch(error){
-        console.error("Ha ocurrido un error al actualizar el tipo")
+        console.error("❌Ha ocurrido un error al actualizar el tipo")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -149,10 +149,10 @@ export async function borrar_producto(){
             replacements:{nombreP},
             type: QueryTypes.DELETE
         })
-        console.log(`${nombreP} fue eliminado correctamente`)
+        console.log(`${nombreP} fue eliminado correctamente ✅`)
     }
     catch(error){
-        console.error("Ha ocurrido un error al borrar el producto")
+        console.error("❌Ha ocurrido un error al borrar el producto")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -169,10 +169,10 @@ export async function borrar_tipo(){
             replacements:{nombreT},
             type: QueryTypes.DELETE
         })
-        console.log(`${nombreT} fue eliminado correctamente`)
+        console.log(`${nombreT} fue eliminado correctamente ✅`)
     }
     catch(error){
-        console.error("Ha ocurrido un error al borrar el tipo")
+        console.error("❌Ha ocurrido un error al borrar el tipo")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)
@@ -194,7 +194,7 @@ export async function listar_productos(){
         console.log(tabla.toString())   
     }
     catch (error){
-        console.error("Ha ocurrido un error al listar productos")
+        console.error("❌Ha ocurrido un error al listar productos")
         await controlErrores(error)
     }
     await inquirer.prompt(inquirerConfirmar)

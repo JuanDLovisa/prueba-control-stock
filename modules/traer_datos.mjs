@@ -9,7 +9,7 @@ export async function mostrar_tipos(){
         return tipos[0]
     }
     catch (error){
-        console.log("Se ha producido un error al obtener los datos de tipo" + error)
+        console.log("❌Se ha producido un error al obtener los datos de tipo" + error)
     }
 }
 
@@ -28,7 +28,7 @@ export async function mostrar_tipos_tabla(){
         console.log(tabla.toString())
     }
     catch (error){
-        console.log("Se ha producido un error al obtener los datos de tipo" + error)
+        console.log("❌Se ha producido un error al obtener los datos de tipo" + error)
     }
 }
 
@@ -40,6 +40,6 @@ export async function mostrar_productos(){
         return productos[0]
     }
     catch (error){
-        console.log("Se ha producido un error al obtener los datos de producto" + error)
+        console.log("❌Se ha producido un error al obtener los datos de producto" + error)
     }
 }
