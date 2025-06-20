@@ -14,8 +14,10 @@ const inquirerCrearBase = [
     }
 ]
 async function initDatabase() {
-  const usuario = await inquirer.prompt(inquirerCrearBase)
+  let usuario = await inquirer.prompt(inquirerCrearBase)
 
+  if(usuario.nombreUsuario === "") usuario.nombreUsuario = "root"
+ 
   try {
     const conn = await mysql.createConnection({
       host: 'localhost',
