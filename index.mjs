@@ -1,9 +1,17 @@
 import inquirer from 'inquirer'
-import {sequelize} from "./modules/conexion.mjs"
-import {crearBase} from "./modules/crear_base.mjs"
-import {inquirerOpciones} from "./modules/inquirer_menu.mjs"
-import {salir, agregar_productos, agregar_tipo, actualizar_producto, actualizar_tipo,
-        borrar_producto, borrar_tipo, listar_productos} from "./modules/funciones_switch.mjs"
+import  {sequelize } from "./modules/conexion.mjs"
+import { crearBase } from "./modules/crear_base.mjs"
+import { inquirerOpciones } from "./modules/inquirer_menu.mjs"
+import { salir } from './modules/funciones switch/salir.mjs'
+
+import { agregar_productos } from './modules/funciones switch/productos/agregar_productos.mjs'
+import { actualizar_producto } from './modules/funciones switch/productos/actualizar_productos.mjs'
+import { borrar_producto } from './modules/funciones switch/productos/borrar_productos.mjs'
+import { listar_productos } from "./modules/funciones switch/productos/listar_productos.mjs"
+
+import { agregar_tipo } from './modules/funciones switch/tipos/agregar_tipos.mjs'
+import { actualizar_tipo } from './modules/funciones switch/tipos/actualizar_tipos.mjs'
+import { borrar_tipo } from './modules/funciones switch/tipos/borrar_tipos.mjs'
 
 await crearBase(sequelize);
 
