@@ -1,4 +1,7 @@
+import {sleep} from "./tiempo.mjs"
+
 export async function controlErrores(error){
+    await sleep(500)
 
     switch(error.name){
         case 'SequelizeUniqueConstraintError': console.error("❌El tipo que esta tratando de insertar ya existe"); 

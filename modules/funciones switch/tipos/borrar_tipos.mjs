@@ -1,34 +1,39 @@
-import { inquirerBorrarTipo, inquirerConfirmar } from "../../inquirer_menu.mjs"
+import { inquirerBorrarTipo, inquirerConfirmar } from "../../otros/inquirer_menu.mjs"
 import inquirer from "inquirer"
-import { mostrar_tipos } from "../../traer_datos.mjs"
+import { mostrar_tipos } from "../../otros/traer_datos.mjs"
 import { sequelize } from "../../conexion.mjs"
-import { controlErrores } from "../../errores.mjs"
+import { controlErrores } from "../../otros/errores.mjs"
 import { QueryTypes } from "sequelize"
+import {sleep} from "../../otros/tiempo.mjs"
 
 export async function borrar_tipo(){
+    await sleep(500)
     const hayTipos = await mostrar_tipos()
 
     if(hayTipos.length > 0) {
-        const borrarTipo = await inquirer.prompt(inquirerBorrarTipo)
-        const nombreT = borrarTipo.nombreTipo
+        const {nombreTipo} = await inquirer.prompt(inquirerBorrarTipo)
 
         try{
-            const sql = "DELETE from tipo_p_s where tipo = :nombreT"
+            const sql = "DELETE from tipo_p_s where tipo = :nombreTipo"
 
             await sequelize.query(sql,{
-                replacements:{nombreT},
+                replacements:{nombreTipo},
                 type: QueryTypes.DELETE
             })
-            console.log(`${nombreT} fue eliminado correctamente ✅`)
+        await sleep(500)
+            console.log(`${nombreTipo} fue eliminado correctamente ✅`)
         }
         catch(error){
-            console.error("❌Ha ocurrido un error al borrar el tipo")
+            await sleep(500)
+            console.error("❌Ha ocurrido un error al borrar el tipo, revise que no haya productos cagados con este tipo")
             await controlErrores(error)
         }
     }
     else{
+        await sleep(300)
         console.error("❌Actualmente no hay tipos para borrar")
     }
 
+    await sleep(500)
     await inquirer.prompt(inquirerConfirmar)
 }

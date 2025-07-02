@@ -1,16 +1,18 @@
-import { inquirerSalir, inquirerConfirmar } from "../inquirer_menu.mjs";
+import { inquirerSalir } from "../otros/inquirer_menu.mjs";
 import inquirer from "inquirer";
-import { input } from "../utils.mjs";
 import { sequelize } from "../conexion.mjs";
+import { sleep } from "../otros/tiempo.mjs";
 
 export async function salir(){
     const salir = await inquirer.prompt(inquirerSalir)
-
+    await sleep(500)
+    
     if(salir.salir === true){
-        console.log("Saliendo del programa... presione enter")
-        await input("")
+        console.log("Saliendo del programa...")
+        await sleep(500)
         await sequelize.close();
         process.exit(0);
     }
-    await inquirer.prompt(inquirerConfirmar)
+    console.log("Regresando al menu...")
+    await sleep(500)
 }

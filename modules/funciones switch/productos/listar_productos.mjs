@@ -1,8 +1,9 @@
-import { inquirerConfirmar } from "../../inquirer_menu.mjs"
+import { inquirerConfirmar } from "../../otros/inquirer_menu.mjs"
 import inquirer from "inquirer"
 import { sequelize } from "../../conexion.mjs"
-import { controlErrores } from "../../errores.mjs"
+import { controlErrores } from "../../otros/errores.mjs"
 import Table from "cli-table3"
+import {sleep} from "../../otros/tiempo.mjs"
 
 function nueva_tabla(){
     const tabla = new Table({
@@ -19,6 +20,7 @@ function nueva_tabla(){
 }
 
 export async function listar_productos(){
+    await sleep(500)
     try{
         const sql = `select p.nombre, p.precio, p.descripcion, p.stock, t.tipo from productos_servicios as p join tipo_p_s as t 
                     where t.id = p.id_tipo order by t.id`;
@@ -30,7 +32,6 @@ export async function listar_productos(){
             listaProductos.forEach(p =>{
                 tabla.push([p.nombre, p.tipo, `$${p.precio.toFixed(2)}`, p.descripcion, p.stock]);
             })
-
             console.log(tabla.toString())  
         }
         else{
@@ -42,5 +43,6 @@ export async function listar_productos(){
         console.error("❌Ha ocurrido un error al listar productos")
         await controlErrores(error)
     }
+    await sleep(500)
     await inquirer.prompt(inquirerConfirmar)
 }

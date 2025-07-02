@@ -1,33 +1,38 @@
-import { inquirerCrearTipo, inquirerConfirmar } from "../../inquirer_menu.mjs"
+import { inquirerCrearTipo, inquirerConfirmar } from "../../otros/inquirer_menu.mjs"
 import inquirer from "inquirer"
-import { mostrar_tipos_tabla } from "../../traer_datos.mjs"
+import { mostrar_tipos_tabla } from "../../otros/traer_datos.mjs"
 import { input } from "../../utils.mjs"
 import { sequelize } from "../../conexion.mjs"
-import { controlErrores } from "../../errores.mjs"
+import { controlErrores } from "../../otros/errores.mjs"
 import { QueryTypes } from "sequelize"
+import {sleep} from "../../otros/tiempo.mjs"
 
 export async function agregar_tipo(){
+    await sleep(500)
     await mostrar_tipos_tabla()
-    const crearTipo = await inquirer.prompt(inquirerCrearTipo)
-    const nombreT = crearTipo.nombreTipo
+    const {nombreTipo} = await inquirer.prompt(inquirerCrearTipo)
     
-    if(nombreT == ""){
+    if(nombreTipo == ""){
+        await sleep(500)
         await input("❌No deben quedar campos vacios, presione Enter para regresar al menu...")
         return
     }
 
     try {
-    const sql = `INSERT INTO tipo_p_s (tipo) VALUES (:nombreT)`;
+    const sql = `INSERT INTO tipo_p_s (tipo) VALUES (:nombreTipo)`;
 
     await sequelize.query(sql, {
-    replacements: {nombreT},
+    replacements: {nombreTipo},
     type: QueryTypes.INSERT
     });
 
-    console.log(`Tipo de producto: ${nombreT} insertado correctamente ✅`);
+    await sleep(500)
+    console.log(`Tipo de producto: ${nombreTipo} insertado correctamente ✅`);
     } catch (error) {
+        await sleep(500)
         console.error("❌Ha ocurrido un error al agregar el tipo")
         await controlErrores(error)
     }
+    await sleep(500)
     await inquirer.prompt(inquirerConfirmar)
 }

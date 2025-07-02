@@ -1,5 +1,5 @@
 import {input} from "./utils.mjs"
-
+import {sleep} from "./otros/tiempo.mjs"
 
 export async function crearBase(sequelize){
     try {
@@ -21,10 +21,12 @@ export async function crearBase(sequelize){
     await sequelize.query(sql);
     }
     catch(error){
-        console.error("❌Ha ocurrido un error al crear las tablas, verifique su conexion SQL",error)
+        console.error("❌Ha ocurrido un error al crear las tablas, verifique su conexion SQL")
+        await sleep(300)
         console.log("Saliendo... presione Enter para continuar")
         await input("")
         await sequelize.close();
         process.exit(1);
     }
+    await sleep(500)
 }

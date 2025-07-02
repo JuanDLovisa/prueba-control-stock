@@ -1,5 +1,5 @@
-import { sequelize } from "./conexion.mjs"
-import {tablaTipos} from "./tables.mjs"
+import { sequelize } from "../conexion.mjs"
+import {tablaTipos} from "../otros/tables.mjs"
 
 export async function mostrar_tipos(){
     try{
